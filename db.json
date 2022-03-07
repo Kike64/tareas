@@ -1,0 +1,32 @@
+{
+  "tareas": [
+    {
+      "id": 1,
+      "fechaFin": "03-02-2022",
+      "duracion": "30",
+      "tiempoRegistrado": "",
+      "status": "pendiente"
+    },
+    {
+      "id": 2,
+      "fechaFin": "04-02-2022",
+      "duracion": "60",
+      "tiempoRegistrado": "",
+      "status": "pendiente"
+    },
+    {
+      "id": 3,
+      "fechaFin": "04-02-2022",
+      "duracion": "30",
+      "tiempoRegistrado": "",
+      "status": "pendiente"
+    },
+    {
+      "id": 4,
+      "fechaFin": "05-02-2022",
+      "duracion": "90",
+      "tiempoRegistrado": "",
+      "status": "pendiente"
+    }
+  ]
+}
