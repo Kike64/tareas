@@ -3,7 +3,7 @@
     {
       "id": 1,
       "nombre": "tarea 1",
-      "descripcion":"esta es la tarea 1",
+      "descripcion": "esta es la tarea 1",
       "fechaFin": "03-02-2022",
       "duracion": "30",
       "tiempoRegistrado": "",
@@ -12,7 +12,7 @@
     {
       "id": 2,
       "nombre": "tarea 2",
-      "descripcion":"esta es la tarea 2",
+      "descripcion": "esta es la tarea 2",
       "fechaFin": "04-02-2022",
       "duracion": "60",
       "tiempoRegistrado": "00:25",
@@ -21,7 +21,7 @@
     {
       "id": 3,
       "nombre": "tarea 3",
-      "descripcion":"esta es la tarea 3",
+      "descripcion": "esta es la tarea 3",
       "fechaFin": "04-02-2022",
       "duracion": "30",
       "tiempoRegistrado": "",
@@ -30,11 +30,110 @@
     {
       "id": 4,
       "nombre": "tarea 4",
-      "descripcion":"esta es la tarea 4",
+      "descripcion": "esta es la tarea 4",
       "fechaFin": "05-02-2022",
       "duracion": "90",
       "tiempoRegistrado": "",
       "status": "pendiente"
+    },
+    {
+      "nombre": "LImpiar arenero",
+      "descripcion": "limpiar arenero de Emilio Garras",
+      "fechaFin": "22-03-2022",
+      "duracion": "30",
+      "tiempoRegistrado": "00:00",
+      "status": "pendiente",
+      "id": 5
+    },
+    {
+      "nombre": "Hacer tarea",
+      "descripcion": "resolver las ecuaciones de la clase de matematicas",
+      "fechaFin": "21-03-2022",
+      "duracion": "60",
+      "tiempoRegistrado": "00:00",
+      "status": "pendiente",
+      "id": 6
+    },
+    {
+      "nombre": "",
+      "descripcion": "",
+      "fechaFin": "",
+      "duracion": "seleccionar",
+      "tiempoRegistrado": "00:00",
+      "status": "pendiente",
+      "id": 7
+    },
+    {
+      "nombre": "",
+      "descripcion": "",
+      "fechaFin": "",
+      "duracion": "seleccionar",
+      "tiempoRegistrado": "00:00",
+      "status": "pendiente",
+      "id": 8
+    },
+    {
+      "nombre": "",
+      "descripcion": "",
+      "fechaFin": "",
+      "duracion": "seleccionar",
+      "tiempoRegistrado": "00:00",
+      "status": "pendiente",
+      "id": 9
+    },
+    {
+      "nombre": "",
+      "descripcion": "",
+      "fechaFin": "",
+      "duracion": "seleccionar",
+      "tiempoRegistrado": "00:00",
+      "status": "pendiente",
+      "id": 10
+    },
+    {
+      "nombre": "",
+      "descripcion": "",
+      "fechaFin": "",
+      "duracion": "seleccionar",
+      "tiempoRegistrado": "00:00",
+      "status": "pendiente",
+      "id": 11
+    },
+    {
+      "nombre": "",
+      "descripcion": "",
+      "fechaFin": "",
+      "duracion": "seleccionar",
+      "tiempoRegistrado": "00:00",
+      "status": "pendiente",
+      "id": 12
+    },
+    {
+      "nombre": "",
+      "descripcion": "",
+      "fechaFin": "",
+      "duracion": "seleccionar",
+      "tiempoRegistrado": "00:00",
+      "status": "pendiente",
+      "id": 13
+    },
+    {
+      "nombre": "",
+      "descripcion": "",
+      "fechaFin": "",
+      "duracion": "seleccionar",
+      "tiempoRegistrado": "00:00",
+      "status": "pendiente",
+      "id": 14
+    },
+    {
+      "nombre": "",
+      "descripcion": "",
+      "fechaFin": "",
+      "duracion": "seleccionar",
+      "tiempoRegistrado": "00:00",
+      "status": "pendiente",
+      "id": 15
     }
   ]
 }
