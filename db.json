@@ -2,6 +2,8 @@
   "tareas": [
     {
       "id": 1,
+      "nombre": "tarea 1",
+      "descripcion":"esta es la tarea 1",
       "fechaFin": "03-02-2022",
       "duracion": "30",
       "tiempoRegistrado": "",
@@ -9,13 +11,17 @@
     },
     {
       "id": 2,
+      "nombre": "tarea 2",
+      "descripcion":"esta es la tarea 2",
       "fechaFin": "04-02-2022",
       "duracion": "60",
-      "tiempoRegistrado": "",
+      "tiempoRegistrado": "00:25",
       "status": "pendiente"
     },
     {
       "id": 3,
+      "nombre": "tarea 3",
+      "descripcion":"esta es la tarea 3",
       "fechaFin": "04-02-2022",
       "duracion": "30",
       "tiempoRegistrado": "",
@@ -23,6 +29,8 @@
     },
     {
       "id": 4,
+      "nombre": "tarea 4",
+      "descripcion":"esta es la tarea 4",
       "fechaFin": "05-02-2022",
       "duracion": "90",
       "tiempoRegistrado": "",
