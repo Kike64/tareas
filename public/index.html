@@ -13,15 +13,19 @@
             <a class="navbar-brand">Tareas</a>
             <div class="d-flex">
                 <input class="form-control me-2" type="search" placeholder="Buscar" aria-label="Search">
-                <button class="btn btn-outline-info" >Buscar</button>
+                <button class="btn btn-outline-info buscar"  >Buscar</button>
                 <button class="btn btn-info"  style="margin-left: 1em;"  data-bs-toggle="modal" data-bs-target="#nuevaTareaModal">Nueva</button>
             </div>        
         </div>
     </nav>
+
+
     <div class="container mb-3" >
         <div class="row row-cols-1  row-cols-md-2 row-cols-lg-3 row-cols-xxl-4 g-4" id="tareasCardsDiv">
         </div>
     </div>
+
+    
     <div class="modal fade" id="nuevaTareaModal" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
         <div class="modal-dialog">
             <div class="modal-content">
@@ -30,7 +34,7 @@
                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                 </div>
                 <div class="modal-body">
-                    <form>
+                    <form id="nuevaTareaForm">
                         <div class="mb-3">
                           <label for="tareaNombre" class="form-label">Nombre</label>
                           <input type="text" class="form-control" id="tareaNombre" required >
