@@ -33,15 +33,16 @@
       "descripcion": "esta es la tarea 4",
       "fechaFin": "05-02-2022",
       "duracion": "90",
-      "tiempoRegistrado": "0:00",
-      "status": "pendiente"
+      "tiempoRegistrado": "0:06",
+      "status": "eliminada",
+      "visible": false
     },
     {
       "nombre": "LImpiar arenero",
       "descripcion": "limpiar arenero de Emilio Garras",
       "fechaFin": "22-03-2022",
       "duracion": "30",
-      "tiempoRegistrado": "0:00",
+      "tiempoRegistrado": "0:11",
       "status": "pendiente",
       "id": 5
     },
@@ -51,8 +52,9 @@
       "fechaFin": "21-03-2022",
       "duracion": "60",
       "tiempoRegistrado": "0:06",
-      "status": "pendiente",
-      "id": 6
+      "status": "eliminada",
+      "id": 6,
+      "visible": false
     },
     {
       "nombre": "LImpiar arenero",
@@ -62,15 +64,6 @@
       "tiempoRegistrado": "0:00",
       "status": "pendiente",
       "id": 7
-    },
-    {
-      "nombre": "",
-      "descripcion": "",
-      "fechaFin": "",
-      "duracion": "seleccionar",
-      "tiempoRegistrado": "0:00",
-      "status": "eliminada",
-      "id": 8
     },
     {
       "nombre": "jalo",
@@ -89,15 +82,6 @@
       "tiempoRegistrado": "0:14",
       "status": "eliminada",
       "id": 10
-    },
-    {
-      "nombre": "",
-      "descripcion": "",
-      "fechaFin": "",
-      "duracion": "seleccionar",
-      "tiempoRegistrado": "0:00",
-      "status": "eliminada",
-      "id": 11
     }
   ]
 }

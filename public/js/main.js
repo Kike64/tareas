@@ -59,6 +59,17 @@ $(document).ready(function(){
         });
     }
 
+    async function filterTarea(filtro){
+        const result = await $.ajax({
+            type: "Get",
+            url: "http://localhost:3000/tareas?"+filtro,
+            async: true,
+            
+        });
+
+        return result;
+    }
+
     $('#nuevaTareaBtn').on('click',async function(e){
 
         e.preventDefault();
@@ -81,14 +92,51 @@ $(document).ready(function(){
 
     });
 
+    $('#navCompletadas').on('click', async function (e) {
+        e.preventDefault();
+
+        $('#tareasCardsDiv').empty();
+
+        const res = await filterTarea('status=completada');
+        res.forEach(element => {
+            render(element)
+        });
+    });
+
+    $('#navEliminadas').on('click', async function (e) {
+        e.preventDefault();
+
+        $('#tareasCardsDiv').empty();
+
+        const res = await filterTarea('status=eliminada');
+        res.forEach(element => {
+            render(element)
+        });
+    });
+
+    $('#navPendientes').on('click', async function (e) {
+        e.preventDefault();
+        $('#tareasCardsDiv').empty();
+        renderisarTareas();
+    });
+
+    $('#buscarTarea').on('click', async function (e) {
+        e.preventDefault();
+
+        $('#tareasCardsDiv').empty();
+
+        const res = await filterTarea('nombre='+$('#buscarTareaInput').val());
+        res.forEach(element => {
+            render(element)
+        });
+    });
     
 
     async function renderisarTareas(){
         const res = await getTareas();
         res.forEach(element => {
-            render(element);
+            if(element.status == "pendiente"){render(element);};
         });
-
         
     }
 
@@ -152,11 +200,25 @@ $(document).ready(function(){
                 let tiempoFormateado = tiempo.minuto+":"+(tiempo.segundo < 10 && tiempo.segundo != '00' ? '0' + tiempo.segundo : tiempo.segundo);
                 actualizarTarea(element.id, {"tiempoRegistrado":tiempoFormateado, "status":"completada"});
 
-                let id= '#card'+element.id;
-                $(id).remove();
-
 
             });
+        }else{
+            let card = "<div class='col' id=card"+element.id+">\n\
+                            <div class='card position-relative shadow'>\n\
+                                <div class='card-body'>\n\
+                                    <h5 class='card-title'>"+element.nombre+"</h5>\n\
+                                    <p class='card-text'>"+element.descripcion+"</p>\n\
+                                </div>\n\
+                                <ul class='list-group list-group-flush'>\n\
+                                    <li class='list-group-item'>Estado: "+element.status+"</li>\n\
+                                    <li class='list-group-item'>Fecha de fin: "+element.fechaFin+"</li>\n\
+                                    <li class='list-group-item'>Duracion: "+element.duracion+" min</li>\n\
+                                    <li class='list-group-item' id=cronometro"+element.id+">Tiempo registrado: "+element.tiempoRegistrado+"</li>\n\
+                                </ul>\n\
+                            </div>\n\
+                        </div>";
+
+            $('#tareasCardsDiv').append(card);
         }
     }
 

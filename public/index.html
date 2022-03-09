@@ -8,16 +8,33 @@
     <title>Tareas</title>
 </head>
 <body>
-    <nav class="navbar sticky-top navbar-dark bg-dark mb-3">
+
+    <nav class="navbar sticky-top navbar-expand-md navbar-dark bg-dark mb-3">
         <div class="container-fluid">
-            <a class="navbar-brand">Tareas</a>
-            <div class="d-flex">
-                <input class="form-control me-2" type="search" placeholder="Buscar" aria-label="Search">
-                <button class="btn btn-outline-info buscar"  >Buscar</button>
-                <button class="btn btn-info"  style="margin-left: 1em;"  data-bs-toggle="modal" data-bs-target="#nuevaTareaModal">Nueva</button>
-            </div>        
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarToggler" aria-controls="navbarToggler" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarToggler">
+                <a class="navbar-brand" href="#">Tareas</a>
+                <ul class="navbar-nav me-auto mb-2 mb-md-0">
+                    <li class="nav-item">
+                        <a class="nav-link" id="navPendientes" href="#">Pendientes</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" id="navCompletadas" href="#">Completadas</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" id="navEliminadas" href="#">Eliminadas</a>
+                    </li>
+                </ul>
+                <form class="d-flex">
+                    <input class="form-control me-2" type="search" placeholder="Buscar" aria-label="Search" id="buscarTareaInput">
+                    <button class="btn btn-outline-info buscar"  id="buscarTarea">Buscar</button>
+                    <button class="btn btn-info"  style="margin-left: 1em;"  data-bs-toggle="modal" data-bs-target="#nuevaTareaModal">Nueva</button>
+                </form>
+          </div>
         </div>
-    </nav>
+      </nav>
 
 
     <div class="container mb-3" >
@@ -50,7 +67,7 @@
                         <div class="mb-3">
                             <label for="tareaDuracion" class="form-label">Duracion</label>
                             <select class="form-select" aria-label="Default select example" id="tareaDuracion" required>
-                                <option selected>seleccionar</option>
+                                <option selected value="">seleccionar</option>
                                 <option value="30">30 min</option>
                                 <option value="45">45 min</option>
                                 <option value="60">60 min</option>
