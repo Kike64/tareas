@@ -3,9 +3,9 @@
     {
       "id": 1,
       "nombre": "tarea 1",
-      "descripcion": "esta es la tarea 1",
-      "fechaFin": "03-02-2022",
-      "duracion": "30",
+      "descripcion": "esta es la tarea 1!",
+      "fechaFin": "04-02-2022",
+      "duracion": "60",
       "tiempoRegistrado": "0:00",
       "status": "pendiente"
     },

@@ -130,6 +130,27 @@ $(document).ready(function(){
             render(element)
         });
     });
+
+    $('#editarTareaBtn').on('click', async function (e) {
+        e.preventDefault();
+
+            let id = $('#editarTareaId').val();
+
+
+            tarea = {
+                "nombre": $('#editarTareaNombre').val(),
+                "descripcion": $('#editarTareaDescripcion').val(),
+                "fechaFin": $('#editarTareaFechaFin').val(),
+                "duracion": $('#editarTareaDuracion').val()
+            }
+
+            $('#cardNombre'+id).text(tarea.nombre);
+            $('#cardDescripcion'+id).text(tarea.descripcion);
+            $('#cardFechaFin'+id).text("Fecha de fin: "+tarea.fechaFin);
+            $('#cardDuracion'+id).text("Duracion: "+tarea.duracion+" min");
+
+            actualizarTarea(id, tarea);
+    });
     
 
     async function renderisarTareas(){
@@ -146,19 +167,20 @@ $(document).ready(function(){
                                 <div class='card position-relative shadow'>\n\
                                     <div class='card-body'>\n\
                                         <button type='button' class='borrarTarea btn-close position-absolute top-0 end-0' style='margin:1em;' aria-label='Close' tareaId="+element.id+" id=btnBorrar"+element.id+"></button>\n\
-                                        <h5 class='card-title'>"+element.nombre+"</h5>\n\
-                                        <p class='card-text'>"+element.descripcion+"</p>\n\
+                                        <h5 class='card-title' id=cardNombre"+element.id+">"+element.nombre+"</h5>\n\
+                                        <p class='card-text' id=cardDescripcion"+element.id+">"+element.descripcion+"</p>\n\
                                     </div>\n\
                                     <ul class='list-group list-group-flush'>\n\
-                                        <li class='list-group-item'>Estado: "+element.status+"</li>\n\
-                                        <li class='list-group-item'>Fecha de fin: "+element.fechaFin+"</li>\n\
-                                        <li class='list-group-item'>Duracion: "+element.duracion+" min</li>\n\
+                                        <li class='list-group-item' id=cardEstado"+element.id+">Estado: "+element.status+"</li>\n\
+                                        <li class='list-group-item' id=cardFechaFin"+element.id+">Fecha de fin: "+element.fechaFin+"</li>\n\
+                                        <li class='list-group-item' id=cardDuracion"+element.id+">Duracion: "+element.duracion+" min</li>\n\
                                         <li class='list-group-item' id=cronometro"+element.id+">Tiempo registrado: "+element.tiempoRegistrado+"</li>\n\
                                     </ul>\n\
                                     <div class='card-body mx-auto'>\n\
                                         <button type='button' class='btn btn-outline-primary' id=btnIniciar"+element.id+">Iniciar</button>\n\
                                         <button type='button' class='btn btn-outline-warning' id=btnPausar"+element.id+" disabled>Pausar</button>\n\
                                         <button type='button' class='btn btn-outline-danger' id=btnDetener"+element.id+" >Detener</button>\n\
+                                        <button type='button' class='btn  btn-outline-dark'  tareaId="+element.id+" id=btnEditar"+element.id+" data-bs-toggle='modal' data-bs-target='#editarTareaModal'><i class='bi-pencil'></i></button>\n\
                                     </div>\n\
                                 </div>\n\
                             </div>";
@@ -199,9 +221,22 @@ $(document).ready(function(){
 
                 let tiempoFormateado = tiempo.minuto+":"+(tiempo.segundo < 10 && tiempo.segundo != '00' ? '0' + tiempo.segundo : tiempo.segundo);
                 actualizarTarea(element.id, {"tiempoRegistrado":tiempoFormateado, "status":"completada"});
+            });
+
+            $('#btnEditar'+element.id).on('click', function (e) {
+                e.preventDefault();
+
+                $('#editarTareaId').val(element.id);
+                $('#editarTareaNombre').val(element.nombre);
+                $('#editarTareaDescripcion').val(element.descripcion);
+                $('#editarTareaFechaFin').val(element.fechaFin);
+                $('#editarTareaDuracion').val(element.duracion);
+                
+                console.log(element);
 
 
             });
+
         }else{
             let card = "<div class='col' id=card"+element.id+">\n\
                             <div class='card position-relative shadow'>\n\
