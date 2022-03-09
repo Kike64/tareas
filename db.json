@@ -2,86 +2,57 @@
   "tareas": [
     {
       "id": 1,
-      "nombre": "tarea 1",
-      "descripcion": "esta es la tarea 1!",
+      "nombre": "Tarea de matematicas",
+      "descripcion": "resolver ecuaciones",
+      "fechaFin": "04-02-2022",
+      "duracion": "30",
+      "tiempoRegistrado": "0:00",
+      "status": "pendiente"
+    },
+    {
+      "id": 2,
+      "nombre": "Ordenar habitacion",
+      "descripcion": "guardar ropa, tender cama, acomodar libros",
       "fechaFin": "04-02-2022",
       "duracion": "60",
       "tiempoRegistrado": "0:00",
       "status": "pendiente"
     },
     {
-      "id": 2,
-      "nombre": "tarea 2",
-      "descripcion": "esta es la tarea 2",
-      "fechaFin": "04-02-2022",
-      "duracion": "60",
-      "tiempoRegistrado": "00:00",
-      "status": "completada"
-    },
-    {
       "id": 3,
-      "nombre": "tarea 3",
-      "descripcion": "esta es la tarea 3",
+      "nombre": "Bañar al gato",
+      "descripcion": "bañar al gato con espuma de lavanda",
       "fechaFin": "04-02-2022",
       "duracion": "30",
-      "tiempoRegistrado": "11:07",
+      "tiempoRegistrado": "0:00",
       "status": "pendiente"
     },
     {
       "id": 4,
-      "nombre": "tarea 4",
-      "descripcion": "esta es la tarea 4",
+      "nombre": "Lavar el auto",
+      "descripcion": "Limpiar carroceria, llantas y limpieza interior",
       "fechaFin": "05-02-2022",
       "duracion": "90",
-      "tiempoRegistrado": "0:06",
-      "status": "eliminada",
-      "visible": false
+      "tiempoRegistrado": "0:00",
+      "status": "pendiente"
     },
     {
       "nombre": "LImpiar arenero",
       "descripcion": "limpiar arenero de Emilio Garras",
       "fechaFin": "22-03-2022",
       "duracion": "30",
-      "tiempoRegistrado": "0:11",
-      "status": "pendiente",
+      "tiempoRegistrado": "15:00",
+      "status": "completada",
       "id": 5
     },
     {
-      "nombre": "Hacer tarea",
-      "descripcion": "resolver las ecuaciones de la clase de matematicas",
+      "nombre": "Lavar ropa",
+      "descripcion": "lavar ropa blanca",
       "fechaFin": "21-03-2022",
       "duracion": "60",
-      "tiempoRegistrado": "0:06",
-      "status": "eliminada",
-      "id": 6,
-      "visible": false
-    },
-    {
-      "nombre": "LImpiar arenero",
-      "descripcion": "",
-      "fechaFin": "",
-      "duracion": "seleccionar",
-      "tiempoRegistrado": "0:00",
-      "status": "pendiente",
-      "id": 7
-    },
-    {
-      "nombre": "jalo",
-      "descripcion": "$('#tareaDescripcion').val()",
-      "fechaFin": "$('#tareaFechaFin').val()",
-      "duracion": "$('#tareaDuracion').val()",
       "tiempoRegistrado": "0:00",
       "status": "eliminada",
-      "id": 9
-    },
-    {
-      "nombre": "Hacer tarea",
-      "descripcion": "resolver las ecuaciones de la clase de matematicas",
-      "fechaFin": "22-03-2022",
-      "duracion": "45",
-      "tiempoRegistrado": "0:14",
-      "status": "eliminada",
-      "id": 10
+      "id": 6
     }
   ]
 }

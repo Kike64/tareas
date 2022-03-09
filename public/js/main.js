@@ -8,6 +8,7 @@ $(document).ready(function(){
     };
     let tareaEnProcesoId = "";
 
+    //funcion para traer todas las tareas de la api
     async function getTareas(){
 
         const result = await $.ajax({
@@ -20,6 +21,7 @@ $(document).ready(function(){
         return result;
     }
 
+    //funcion para traer tarea por id de la api
     async function getTarea(id){
         const result = await $.ajax({
             type: "Get",
@@ -31,6 +33,7 @@ $(document).ready(function(){
         return result;
     }
 
+    //funcion para agregar nueva tarea
     async function newTarea(tarea){
         const result = await $.ajax({
             type: "POST",
@@ -47,6 +50,7 @@ $(document).ready(function(){
     }
 
 
+    //funcion para actualizar tarea
     function actualizarTarea(id, data){
         $.ajax({
             type: "PATCH",
@@ -60,6 +64,7 @@ $(document).ready(function(){
         });
     }
 
+    //funcion para traer tareas filtradas de la api
     async function filterTarea(filtro){
         const result = await $.ajax({
             type: "Get",
@@ -71,6 +76,7 @@ $(document).ready(function(){
         return result;
     }
 
+    //funcion para extraer los datos del formulario de nueva tarea y llama a la funcion de crear tarea
     $('#nuevaTareaBtn').on('click',async function(e){
 
         e.preventDefault();
@@ -92,6 +98,7 @@ $(document).ready(function(){
 
     });
 
+    //funciones para navegar y renderisar diferentes tareas segun su estado
     $('#navCompletadas').on('click', async function (e) {
         e.preventDefault();
 
@@ -122,6 +129,7 @@ $(document).ready(function(){
         
     });
 
+    //funcion para extraer el nombre de la tarea del campo buscar y llamar a la funcion de filtrar pasandole el nombre de la tarea
     $('#buscarTarea').on('click', async function (e) {
         e.preventDefault();
 
@@ -133,6 +141,8 @@ $(document).ready(function(){
         });
     });
 
+    //funcion para extraer la informacion del form de editar, manda los datos a la funcion de actualizar tarea y actualiza los datos de la vista de la tarea, 
+    //al final limpia el formulario
     $('#editarTareaBtn').on('click', async function (e) {
         e.preventDefault();
 
@@ -156,7 +166,7 @@ $(document).ready(function(){
             $("#editarTareaForm")[0].reset();
     });
     
-
+    //esta funcion se manda a llamar al cargar la pagina, llama a la funcion de getTareas y despues manda a renderisar cada una de las tareas pendientes
     async function renderisarTareas(){
         const res = await getTareas();
         res.forEach(element => {
@@ -165,6 +175,7 @@ $(document).ready(function(){
         
     }
 
+    //metodo para crear y renderisar los componentes de las tareas
     function render(element){
         if(element.status == "pendiente"){
             let card = "<div class='col' id=card"+element.id+">\n\
@@ -191,6 +202,7 @@ $(document).ready(function(){
 
             $('#tareasCardsDiv').append(card);
 
+            //boton para borrar tarea, actualiza su estado a eliminada y la quita de la vista
             $('#btnBorrar'+element.id).on('click',function(e){
                 e.preventDefault();
 
@@ -200,6 +212,7 @@ $(document).ready(function(){
 
             });
 
+            //boton para iniciar el cronometro y a su ves revisa si no hay otra tarea en proceso
             $('#btnIniciar'+element.id).on('click',function(e){
                 e.preventDefault();
                 if(!tareaEnProceso){
@@ -212,6 +225,7 @@ $(document).ready(function(){
 
             });
 
+            //boton para pausar el cronometro, y manda una actualizacion a la api de el tiempo registrado
             $('#btnPausar'+element.id).on('click',function(e){
                 e.preventDefault();
                 tareaEnProceso = false;
@@ -224,6 +238,7 @@ $(document).ready(function(){
 
             });
 
+            //boton para detener, actualiza el estado de tarea en proceso y manda a actualizar la tarea poniendo su estado como completada
             $('#btnDetener'+element.id).on('click',function(e){
                 e.preventDefault();
                 tareaEnProceso = false;
@@ -232,6 +247,7 @@ $(document).ready(function(){
                 actualizarTarea(element.id, {"tiempoRegistrado":tiempoFormateado, "status":"completada"});
             });
 
+            //boton de editar para abrir el formulario de edicion, carga los datos de la tarea en el form
             $('#btnEditar'+element.id).on('click', function (e) {
                 e.preventDefault();
 
@@ -246,6 +262,7 @@ $(document).ready(function(){
 
             });
 
+            //condicion para ver si una tarea esta en proceso y cambiar las propiedades de los botones
             if(tareaEnProceso && element.id == tareaEnProcesoId){
                 $('#btnIniciar'+tareaEnProcesoId).prop('disabled', true);
                 $('#btnPausar'+tareaEnProcesoId).prop('disabled', false);
@@ -256,6 +273,7 @@ $(document).ready(function(){
             }
 
         }else{
+            // componente para tareas eliminadas y completadas
             let card = "<div class='col' id=card"+element.id+">\n\
                             <div class='card position-relative shadow'>\n\
                                 <div class='card-body'>\n\
@@ -275,14 +293,19 @@ $(document).ready(function(){
         }
     }
 
+    //funcion para crear el cronombetro
     async function cronometro(element){
 
+        //hacemos una peticion de la tarea, para asegurar la integridad de los datos
         const tareaTiempo = await getTarea(element.id);
+        // extraemos el tiempo registrado
         let tiempoDivido = tareaTiempo.tiempoRegistrado.split(":",2);
 
 
+        //nos aseguramos de que no exista otra tarea en proceso
         if(!tareaEnProceso){
 
+            //cambiamos los estados de tarea en proceso y el id de la tarea en proceso
             tareaEnProcesoId= tareaTiempo.id;
             tareaEnProceso=true;
 
@@ -293,7 +316,7 @@ $(document).ready(function(){
             $('#btnIniciar'+element.id).prop('disabled', true);
             $('#btnPausar'+element.id).prop('disabled', false);
 
-
+            //funcion para hacer el cronometro
             tiempo_corriendo = setInterval(function(){
 
                 if(tareaEnProceso){
