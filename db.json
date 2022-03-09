@@ -6,9 +6,9 @@
       "descripcion": "esta es la tarea 1",
       "fechaFin": "03-02-2022",
       "duracion": "30",
-      "tiempoRegistrado": "",
+      "tiempoRegistrado": "0:00",
       "status": "pendiente",
-      "visible": false
+      "visible": true
     },
     {
       "id": 2,
@@ -16,9 +16,9 @@
       "descripcion": "esta es la tarea 2",
       "fechaFin": "04-02-2022",
       "duracion": "60",
-      "tiempoRegistrado": "00:25",
+      "tiempoRegistrado": "0:25",
       "status": "pendiente",
-      "visible": false
+      "visible": true
     },
     {
       "id": 3,
@@ -26,7 +26,7 @@
       "descripcion": "esta es la tarea 3",
       "fechaFin": "04-02-2022",
       "duracion": "30",
-      "tiempoRegistrado": "",
+      "tiempoRegistrado": "8:17",
       "status": "pendiente",
       "visible": true
     },
@@ -36,7 +36,7 @@
       "descripcion": "esta es la tarea 4",
       "fechaFin": "05-02-2022",
       "duracion": "90",
-      "tiempoRegistrado": "",
+      "tiempoRegistrado": "0:00",
       "status": "pendiente",
       "visible": true
     },
@@ -45,17 +45,17 @@
       "descripcion": "limpiar arenero de Emilio Garras",
       "fechaFin": "22-03-2022",
       "duracion": "30",
-      "tiempoRegistrado": "00:00",
+      "tiempoRegistrado": "0:00",
       "status": "pendiente",
       "id": 5,
-      "visible": true
+      "visible": false
     },
     {
       "nombre": "Hacer tarea",
       "descripcion": "resolver las ecuaciones de la clase de matematicas",
       "fechaFin": "21-03-2022",
       "duracion": "60",
-      "tiempoRegistrado": "00:00",
+      "tiempoRegistrado": "0:00",
       "status": "pendiente",
       "id": 6,
       "visible": false
@@ -65,20 +65,50 @@
       "descripcion": "",
       "fechaFin": "",
       "duracion": "seleccionar",
-      "tiempoRegistrado": "00:00",
+      "tiempoRegistrado": "0:00",
       "status": "pendiente",
       "id": 7,
-      "visible": false
+      "visible": true
     },
     {
       "nombre": "",
       "descripcion": "",
       "fechaFin": "",
       "duracion": "seleccionar",
-      "tiempoRegistrado": "00:00",
+      "tiempoRegistrado": "0:00",
       "status": "pendiente",
       "visible": false,
       "id": 8
+    },
+    {
+      "nombre": "jalo",
+      "descripcion": "$('#tareaDescripcion').val()",
+      "fechaFin": "$('#tareaFechaFin').val()",
+      "duracion": "$('#tareaDuracion').val()",
+      "tiempoRegistrado": "0:00",
+      "status": "pendiente",
+      "visible": false,
+      "id": 9
+    },
+    {
+      "nombre": "Hacer tarea",
+      "descripcion": "resolver las ecuaciones de la clase de matematicas",
+      "fechaFin": "22-03-2022",
+      "duracion": "45",
+      "tiempoRegistrado": "0:14",
+      "status": "pendiente",
+      "visible": true,
+      "id": 10
+    },
+    {
+      "nombre": "",
+      "descripcion": "",
+      "fechaFin": "",
+      "duracion": "seleccionar",
+      "tiempoRegistrado": "0:00",
+      "status": "pendiente",
+      "visible": false,
+      "id": 11
     }
   ]
 }

@@ -1,12 +1,28 @@
 
 $(document).ready(function(){
 
+    let tareaEnProceso = false;
+    let tiempo = {
+        minuto: "00",
+        segundo: "00"
+    };
 
     async function getTareas(){
 
         const result = await $.ajax({
             type: "GET",
             url: "http://localhost:3000/tareas",
+            async: true,
+            
+        });
+
+        return result;
+    }
+
+    async function getTarea(id){
+        const result = await $.ajax({
+            type: "Get",
+            url: "http://localhost:3000/tareas/"+id,
             async: true,
             
         });
@@ -29,11 +45,12 @@ $(document).ready(function(){
         return result;
     }
 
-    function borrarTarea(id){
+
+    function actualizarTarea(id, data){
         $.ajax({
             type: "PATCH",
             url: "http://localhost:3000/tareas/"+id,
-            data: JSON.stringify({"visible":false}),
+            data: JSON.stringify(data),
             dataType: "json",
             contentType: 'application/json',
             success: function (response) {
@@ -77,7 +94,7 @@ $(document).ready(function(){
 
     function render(element){
         if(element.visible){
-            var card = "<div class='col' id=card"+element.id+">\n\
+            let card = "<div class='col' id=card"+element.id+">\n\
                                 <div class='card position-relative shadow'>\n\
                                     <div class='card-body'>\n\
                                         <button type='button' class='borrarTarea btn-close position-absolute top-0 end-0' style='margin:1em;' aria-label='Close' tareaId="+element.id+" id=btnBorrar"+element.id+"></button>\n\
@@ -88,12 +105,12 @@ $(document).ready(function(){
                                         <li class='list-group-item'>Estado: "+element.status+"</li>\n\
                                         <li class='list-group-item'>Fecha de fin: "+element.fechaFin+"</li>\n\
                                         <li class='list-group-item'>Duracion: "+element.duracion+" min</li>\n\
-                                        <li class='list-group-item'>Tiempo registrado: "+element.tiempoRegistrado+"</li>\n\
+                                        <li class='list-group-item' id=cronometro"+element.id+">Tiempo registrado: "+element.tiempoRegistrado+"</li>\n\
                                     </ul>\n\
                                     <div class='card-body mx-auto'>\n\
-                                        <button type='button' class='btn btn-outline-primary'>Iniciar</button>\n\
-                                        <button type='button' class='btn btn-outline-warning''>Pausar</button>\n\
-                                        <button type='button' class='btn btn-outline-danger''>Detener</button>\n\
+                                        <button type='button' class='btn btn-outline-primary' id=btnIniciar"+element.id+">Iniciar</button>\n\
+                                        <button type='button' class='btn btn-outline-warning' id=btnPausar"+element.id+" disabled>Pausar</button>\n\
+                                        <button type='button' class='btn btn-outline-danger' id=btnDetener"+element.id+" >Detener</button>\n\
                                     </div>\n\
                                 </div>\n\
                             </div>";
@@ -103,11 +120,76 @@ $(document).ready(function(){
             $('#btnBorrar'+element.id).on('click',function(e){
                 e.preventDefault();
 
-                var id= '#card'+element.id;
+                let id= '#card'+element.id;
                 $(id).remove();
-                borrarTarea(element.id);
+                actualizarTarea(element.id, {"visible":false});
 
             });
+
+            $('#btnIniciar'+element.id).on('click',function(e){
+                e.preventDefault();
+
+                cronometro(element);
+
+            });
+
+            $('#btnPausar'+element.id).on('click',function(e){
+                e.preventDefault();
+                tareaEnProceso = false;
+
+                let tiempoFormateado = tiempo.minuto+":"+(tiempo.segundo < 10 && tiempo.segundo != '00' ? '0' + tiempo.segundo : tiempo.segundo);
+                actualizarTarea(element.id, {"tiempoRegistrado":tiempoFormateado});
+
+                $(this).prop('disabled', true);
+                $('#btnIniciar'+element.id).prop('disabled', false);
+
+            });
+        }
+    }
+
+    async function cronometro(element){
+
+        const tareaTiempo = await getTarea(element.id);
+        let tiempoDivido = tareaTiempo.tiempoRegistrado.split(":",2);
+
+        console.log(tiempoDivido);
+
+        if(!tareaEnProceso){
+
+            tareaEnProceso=true;
+
+            tiempo.minuto= tiempoDivido[0]
+            tiempo.segundo = tiempoDivido[1]
+
+            
+            $('#btnIniciar'+element.id).prop('disabled', true);
+            $('#btnPausar'+element.id).prop('disabled', false);
+
+
+            tiempo_corriendo = setInterval(function(){
+
+                if(tareaEnProceso){
+
+                    tiempo.segundo++;
+                    if(tiempo.segundo >= 60)
+                    {
+                        tiempo.segundo = 0;
+                        tiempo.minuto++;
+                    }      
+
+                    let text = "Tiempo registrado: "+tiempo.minuto+":"+(tiempo.segundo < 10 ? '0' + tiempo.segundo : tiempo.segundo);
+
+                    $('#cronometro'+element.id).text(text);
+                    console.log(tiempo);
+                }else{
+                    clearInterval(tiempo_corriendo);
+                }
+            console.log("hello")
+            }, 1000);
+
+        }else{
+            let alrt = "<div class=' mx-auto alert alert-danger alert-dismissible fade show fixed-bottom' role='alert' style='width:400px'>Ya tienes una tarea en proceso!<button type='button' class='btn-close' data-bs-dismiss='alert' aria-label='Close'></button></div>";
+            $('#alertDiv').append(alrt);
         }
     }
 
