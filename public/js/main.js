@@ -93,7 +93,7 @@ $(document).ready(function(){
     }
 
     function render(element){
-        if(element.visible){
+        if(element.status == "pendiente"){
             let card = "<div class='col' id=card"+element.id+">\n\
                                 <div class='card position-relative shadow'>\n\
                                     <div class='card-body'>\n\
@@ -122,7 +122,7 @@ $(document).ready(function(){
 
                 let id= '#card'+element.id;
                 $(id).remove();
-                actualizarTarea(element.id, {"visible":false});
+                actualizarTarea(element.id, {"visible":false, "status": "eliminada"});
 
             });
 
@@ -142,6 +142,19 @@ $(document).ready(function(){
 
                 $(this).prop('disabled', true);
                 $('#btnIniciar'+element.id).prop('disabled', false);
+
+            });
+
+            $('#btnDetener'+element.id).on('click',function(e){
+                e.preventDefault();
+                tareaEnProceso = false;
+
+                let tiempoFormateado = tiempo.minuto+":"+(tiempo.segundo < 10 && tiempo.segundo != '00' ? '0' + tiempo.segundo : tiempo.segundo);
+                actualizarTarea(element.id, {"tiempoRegistrado":tiempoFormateado, "status":"completada"});
+
+                let id= '#card'+element.id;
+                $(id).remove();
+
 
             });
         }

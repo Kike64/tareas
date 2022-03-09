@@ -7,8 +7,7 @@
       "fechaFin": "03-02-2022",
       "duracion": "30",
       "tiempoRegistrado": "0:00",
-      "status": "pendiente",
-      "visible": true
+      "status": "pendiente"
     },
     {
       "id": 2,
@@ -16,9 +15,8 @@
       "descripcion": "esta es la tarea 2",
       "fechaFin": "04-02-2022",
       "duracion": "60",
-      "tiempoRegistrado": "0:25",
-      "status": "pendiente",
-      "visible": true
+      "tiempoRegistrado": "00:00",
+      "status": "completada"
     },
     {
       "id": 3,
@@ -26,9 +24,8 @@
       "descripcion": "esta es la tarea 3",
       "fechaFin": "04-02-2022",
       "duracion": "30",
-      "tiempoRegistrado": "8:17",
-      "status": "pendiente",
-      "visible": true
+      "tiempoRegistrado": "10:38",
+      "status": "pendiente"
     },
     {
       "id": 4,
@@ -37,8 +34,7 @@
       "fechaFin": "05-02-2022",
       "duracion": "90",
       "tiempoRegistrado": "0:00",
-      "status": "pendiente",
-      "visible": true
+      "status": "pendiente"
     },
     {
       "nombre": "LImpiar arenero",
@@ -47,18 +43,16 @@
       "duracion": "30",
       "tiempoRegistrado": "0:00",
       "status": "pendiente",
-      "id": 5,
-      "visible": false
+      "id": 5
     },
     {
       "nombre": "Hacer tarea",
       "descripcion": "resolver las ecuaciones de la clase de matematicas",
       "fechaFin": "21-03-2022",
       "duracion": "60",
-      "tiempoRegistrado": "0:00",
+      "tiempoRegistrado": "0:06",
       "status": "pendiente",
-      "id": 6,
-      "visible": false
+      "id": 6
     },
     {
       "nombre": "LImpiar arenero",
@@ -67,8 +61,7 @@
       "duracion": "seleccionar",
       "tiempoRegistrado": "0:00",
       "status": "pendiente",
-      "id": 7,
-      "visible": true
+      "id": 7
     },
     {
       "nombre": "",
@@ -76,8 +69,7 @@
       "fechaFin": "",
       "duracion": "seleccionar",
       "tiempoRegistrado": "0:00",
-      "status": "pendiente",
-      "visible": false,
+      "status": "eliminada",
       "id": 8
     },
     {
@@ -86,8 +78,7 @@
       "fechaFin": "$('#tareaFechaFin').val()",
       "duracion": "$('#tareaDuracion').val()",
       "tiempoRegistrado": "0:00",
-      "status": "pendiente",
-      "visible": false,
+      "status": "eliminada",
       "id": 9
     },
     {
@@ -96,8 +87,7 @@
       "fechaFin": "22-03-2022",
       "duracion": "45",
       "tiempoRegistrado": "0:14",
-      "status": "pendiente",
-      "visible": true,
+      "status": "eliminada",
       "id": 10
     },
     {
@@ -106,8 +96,7 @@
       "fechaFin": "",
       "duracion": "seleccionar",
       "tiempoRegistrado": "0:00",
-      "status": "pendiente",
-      "visible": false,
+      "status": "eliminada",
       "id": 11
     }
   ]
