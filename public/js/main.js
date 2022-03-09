@@ -6,6 +6,7 @@ $(document).ready(function(){
         minuto: "00",
         segundo: "00"
     };
+    let tareaEnProcesoId = "";
 
     async function getTareas(){
 
@@ -88,7 +89,6 @@ $(document).ready(function(){
         
 
         $("#nuevaTareaForm")[0].reset();
-        //if(key){buscarPorIndex(key);}
 
     });
 
@@ -118,6 +118,8 @@ $(document).ready(function(){
         e.preventDefault();
         $('#tareasCardsDiv').empty();
         renderisarTareas();
+
+        
     });
 
     $('#buscarTarea').on('click', async function (e) {
@@ -150,6 +152,8 @@ $(document).ready(function(){
             $('#cardDuracion'+id).text("Duracion: "+tarea.duracion+" min");
 
             actualizarTarea(id, tarea);
+
+            $("#editarTareaForm")[0].reset();
     });
     
 
@@ -198,8 +202,13 @@ $(document).ready(function(){
 
             $('#btnIniciar'+element.id).on('click',function(e){
                 e.preventDefault();
-
-                cronometro(element);
+                if(!tareaEnProceso){
+                    cronometro(element);
+                }else{
+                    let alrt = "<div class=' mx-auto alert alert-danger alert-dismissible fade show fixed-bottom' role='alert' style='width:400px'>Ya tienes una tarea en proceso!<button type='button' class='btn-close' data-bs-dismiss='alert' aria-label='Close'></button></div>";
+                    $('#alertDiv').append(alrt);
+                }
+                
 
             });
 
@@ -237,6 +246,15 @@ $(document).ready(function(){
 
             });
 
+            if(tareaEnProceso && element.id == tareaEnProcesoId){
+                $('#btnIniciar'+tareaEnProcesoId).prop('disabled', true);
+                $('#btnPausar'+tareaEnProcesoId).prop('disabled', false);
+
+                let text = "Tiempo registrado: "+tiempo.minuto+":"+(tiempo.segundo < 10 ? '0' + tiempo.segundo : tiempo.segundo);
+                $('#cronometro'+element.id).text(text)
+
+            }
+
         }else{
             let card = "<div class='col' id=card"+element.id+">\n\
                             <div class='card position-relative shadow'>\n\
@@ -262,10 +280,10 @@ $(document).ready(function(){
         const tareaTiempo = await getTarea(element.id);
         let tiempoDivido = tareaTiempo.tiempoRegistrado.split(":",2);
 
-        console.log(tiempoDivido);
 
         if(!tareaEnProceso){
 
+            tareaEnProcesoId= tareaTiempo.id;
             tareaEnProceso=true;
 
             tiempo.minuto= tiempoDivido[0]
@@ -290,16 +308,11 @@ $(document).ready(function(){
                     let text = "Tiempo registrado: "+tiempo.minuto+":"+(tiempo.segundo < 10 ? '0' + tiempo.segundo : tiempo.segundo);
 
                     $('#cronometro'+element.id).text(text);
-                    console.log(tiempo);
                 }else{
                     clearInterval(tiempo_corriendo);
                 }
-            console.log("hello")
             }, 1000);
 
-        }else{
-            let alrt = "<div class=' mx-auto alert alert-danger alert-dismissible fade show fixed-bottom' role='alert' style='width:400px'>Ya tienes una tarea en proceso!<button type='button' class='btn-close' data-bs-dismiss='alert' aria-label='Close'></button></div>";
-            $('#alertDiv').append(alrt);
         }
     }
 
